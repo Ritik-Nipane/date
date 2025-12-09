@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Radhe ❤️</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+</head>
+<body>
+
+    <div id="particles"></div>
+    <div class="gradient-bg"></div>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🔇</span>
+    </div>
+    <audio id="bg-music" loop>
+        <source src="snowman.mp3" type="audio/mpeg">
+    </audio>
+
+    <section id="screen-start" class="screen active">
+        <div class="glass-card center-content">
+            <h1 class="bounce-text">For Radhe...</h1>
+            
+            <div class="media-container">
+                <img src="assest/intro.png" alt="Intro Image" class="memory-media">
+            </div>
+
+            <p>I made something special for you.</p>
+            <p class="small-note">(Turn up your volume 🔊)</p>
+            <button class="btn-main" onclick="startJourney()">Click to Open ❤️</button>
+        </div>
+    </section>
+
+    <section id="screen-2014" class="screen hidden">
+        <div class="glass-card">
+            <h2>The Year 2014...</h2>
+            
+            <div class="media-container">
+                <img src="assest/2014.png" alt="2014 Memory" class="memory-media">
+            </div>
+
+            <div class="story-content">
+                <p id="typewriter-2014" class="type-text"></p> 
+            </div>
+            <button class="btn-next" onclick="nextSlide('screen-2025')">What happened next? ➜</button>
+        </div>
+    </section>
+
+    <section id="screen-2025" class="screen hidden">
+        <div class="glass-card">
+            <h2>July 23, 2025</h2>
+            
+            <div class="media-container">
+                <img src="assest/2025.jpg" alt="2025 Memory" class="memory-media">
+            </div>
+
+            <div class="story-content">
+                <p id="typewriter-2025" class="type-text"></p>
+            </div>
+            <button class="btn-next" onclick="nextSlide('screen-ask')">And then... ➜</button>
+        </div>
+    </section>
+
+    <section id="screen-ask" class="screen hidden">
+        <div class="glass-card center-content">
+            
+            <div class="media-container" style="height: auto; max-height: 60vh;">
+                <video 
+                    src="assets/ask.mp4" 
+                    class="memory-media" 
+                    controls 
+                    playsinline
+                    style="width: 100%; height: auto; max-height: 100%; object-fit: contain;">
+                </video>
+            </div>
+            
+            <h1 class="big-question">Radhe...</h1>
+            <p class="blush-text">I am yours, love. You can see me anytime. (hehe)</p>
+            <h2>Will you go on a date with me? 🌹</h2>
+            
+            <div class="buttons-container">
+                <button class="btn-yes" onclick="sheSaidYes()">YES! 💖</button>
+                <button class="btn-no" id="no-btn">No</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="screen-plan" class="screen hidden">
+        <div class="glass-card wide-card">
+            <h1>Yay! She said YES! 🎉</h1>
+            <p>Here is the plan, my love:</p>
+
+            <div class="plan-grid">
+                <div class="plan-box">
+                    <h3>Option 1: Nature 🌿</h3>
+                    <ul>
+                        <li><b>10:00 AM:</b> Meet @ Churchgate</li>
+                        <li><b>10:30 AM:</b> Hanging Gardens Walk</li>
+                        <li><b>12:30 PM:</b> Movie "Dhurandhar" 🎬</li>
+                        <li><b>04:30 PM:</b> Marine Drive Sunset</li>
+                    </ul>
+                </div>
+                <div class="plan-box">
+                    <h3>Option 2: Movie First 🍿</h3>
+                    <ul>
+                        <li><b>10:15 AM:</b> Movie @ Metro INOX</li>
+                        <li><b>02:15 PM:</b> Lunch Date</li>
+                        <li><b>03:15 PM:</b> Malabar Hill</li>
+                        <li><b>05:30 PM:</b> Station Rush</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="btn-next" onclick="showFinale()">One last thing... ✨</button>
+        </div>
+    </section>
+
+    <section id="screen-moon" class="screen hidden night-mode">
+        <div class="moon-sky">
+            <div class="moon"></div>
+            <div class="star"></div>
+        </div>
+        
+        <div class="glass-card dark-card">
+            <h1>My Moon & My Star</h1>
+            <p class="shyari">
+                "You are the Moon, lighting up my world...<br>
+                And I am the Star, always shining right by your side."
+            </p>
+            <div class="shyari-box">
+                <p>"Chand sa chehra tera, sitaron si muskaan...<br>
+                Tu bas haan kar de, ban ja meri jaan."</p>
+            </div>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top:20px;">Created by your Star ⭐</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* --- VARIABLES --- */
+:root {
+    --pink-light: #fff0f3;
+    --pink-dark: #ff4d6d;
+    --pink-accent: #ff8fa3;
+    --text: #590d22;
+    --glass: rgba(255, 255, 255, 0.85); /* More opaque to read text better */
+    --glass-border: rgba(255, 255, 255, 0.9);
+}
+
+/* --- GLOBAL SETUP --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    /* Allow scrolling if content gets too tall */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- THE SCREENS --- */
+.screen {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; 
+    min-height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    padding: 20px 0; /* Add padding for scrolling */
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 10;
+    position: relative; /* Allows scrolling on mobile */
+}
+
+.hidden { display: none; }
+
+/* --- GLASS CARD DESIGN (Flexible Height) --- */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    
+    /* WIDTH SETTINGS */
+    width: 90%; 
+    max-width: 500px; /* Phone friendly */
+    
+    /* HEIGHT SETTINGS - Let it grow! */
+    height: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--text);
+    margin: auto;
+}
+
+/* --- MEDIA CONTAINER (The Fix) --- */
+.media-container {
+    width: 100%;
+    /* No fixed height! It adapts to the image */
+    max-height: 60vh; /* Don't take up MORE than 60% of screen */
+    margin-bottom: 15px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.05); /* Light grey bg while loading */
+}
+
+.memory-media {
+    width: 100%;
+    height: auto;
+    max-height: 60vh; /* Ensure it fits on screen */
+    object-fit: contain; /* SHOWS FULL IMAGE (No cropping) */
+    display: block;
+    border-radius: 12px;
+}
+
+/* --- TEXT STYLES --- */
+h1 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; margin: 10px 0; color: var(--pink-dark); line-height: 1.2; }
+h2 { font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin-bottom: 10px; color: var(--pink-dark); }
+p { font-size: 1rem; line-height: 1.5; font-weight: 500; margin-bottom: 15px; }
+
+/* --- BUTTONS --- */
+button {
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 5px;
+    transition: transform 0.2s;
+}
+.btn-main, .btn-next, .btn-yes { background: var(--pink-dark); color: white; box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3); }
+.btn-no { background: white; color: var(--pink-dark); border: 1px solid var(--pink-dark); position: relative; }
+button:hover { transform: scale(1.05); }
+
+/* --- MUSIC CONTROL --- */
+.music-control {
+    position: fixed; bottom: 20px; right: 20px;
+    background: white; width: 45px; height: 45px;
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 1000;
+    font-size: 20px;
+}
+
+/* --- NIGHT MODE --- */
+.night-mode { background: #0f2027; } 
+.night-mode .moon-sky { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.moon { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 100px; height: 100px; background: #fdfcdc; border-radius: 50%; box-shadow: 0 0 40px #fdfcdc; }
+.star { position: absolute; top: 15%; left: 60%; width: 10px; height: 10px; background: white; border-radius: 50%; box-shadow: 0 0 15px white; animation: twinkle 1.5s infinite alternate; }
+.dark-card { background: rgba(0, 0, 0, 0.6); color: white; border: 1px solid rgba(255,255,255,0.2); }
+.dark-card h1 { color: #ffd700; }
+.dark-card p { color: #eee; }
+
+@keyframes twinkle { from { opacity: 0.5; transform: scale(0.8); } to { opacity: 1; transform: scale(1.2); } }
